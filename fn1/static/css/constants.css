@@ -1,0 +1,13 @@
+:root {
+    --bg-primary: #fff;
+    --bg-accent: #8C2CFF;
+
+    --text-primary: #1A1A19;
+    --text-accent: #8C2CFF;
+    --text-accent-dark: #39126A;
+    --text-negative: #fff;
+
+    --icon-primary: #1A1A19;
+    --icon-accent: #8C2CFF;
+    --icon-negative: #1A1A19;
+}
