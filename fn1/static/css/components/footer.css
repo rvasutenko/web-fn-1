@@ -79,6 +79,6 @@
 
 .links__divider {
   width: 1px;
-  background-color: #fff;
-  margin: 0 20px; /* отступы от колонок */
+  background-color: var(--bg-primary);
+  margin: 0 20px;
 }
