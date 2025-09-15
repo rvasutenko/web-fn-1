@@ -1,5 +1,44 @@
-.roma {
+.header {
     width: 100%;
-    height: 100px;
-    background-color: var(--bg-accent);
+    padding: 12px 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    border-bottom: solid 1px var(--stroke-primary);
+}
+
+.header__logo {
+    height: 64px;
+}
+
+.header__nav {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 28px;
+    font-size: 20px;
+    line-height: 120%;
+}
+
+.header__anchor {
+    text-decoration: none;
+    color: var(--text-primary);
+}
+
+.header__contacts {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 16px;
+}
+
+.header__contacts a {
+    width: 28px;
+    height: 28px;
+}
+
+.header__contact {
+    width: 28px;
+    height: 28px;
 }
