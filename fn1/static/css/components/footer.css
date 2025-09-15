@@ -10,6 +10,7 @@
 }
 
 .footer__content{
+    margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
@@ -21,11 +22,19 @@
     flex-direction: column;
 }
 
+.footer__contacts{
+    max-width: 300px;
+}
 
+.footer__contacts p {
+  margin: 5px 0;
+  font-size: 14px;
+  line-height: 1.4;
+}
 
 .footer__links h3,
 .footer__contacts h3{
-    font-size: 16px;
+    font-size: 20px;
     color: var(--bg-primary);
 }
 
@@ -51,5 +60,10 @@
 .footer__contacts a {
     color: var(--bg-primary);
     text-decoration: none;
+}
+
+.footer__links a:hover,
+.footer__contacts a:hover {
+  text-decoration: underline;
 }
 
