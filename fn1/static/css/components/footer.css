@@ -1,18 +1,11 @@
 .footer {
-    background-color: var(--bg-accent);
     width: 100%;
-    display: flex;              
-    justify-content: center;
-    align-items: center;
-    padding: 20px 100px;
-}
-
-.footer__content {
-    width: 100%;
-    max-width: 1200px;
+    padding: 12px 100px;
     display: flex;
     justify-content: space-between;
-    
+    align-items: center;
+    flex-direction: row;
+    background-color: var(--bg-accent);
 }
 
 
