@@ -1,0 +1,38 @@
+.article {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 40px;
+}
+
+.article.reversed {
+    flex-direction: row-reverse;
+}
+
+.article.imgless {
+    margin-top: -12px;
+}
+
+.article__header {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.article__img {
+    max-width: 450px;
+    height: 100%;
+    object-fit: cover;
+    user-select: none;
+}
+
+.article__content {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.article__text {
+    display: flex;
+    flex-direction: column;
+}

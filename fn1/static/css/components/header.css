@@ -6,10 +6,12 @@
     align-items: center;
     flex-direction: row;
     border-bottom: solid 1px var(--stroke-primary);
+    position: fixed;
+    background: var(--bg-primary);
 }
 
 .header__logo {
-    height: 64px;
+    height: 56px;
 }
 
 .header__nav {
