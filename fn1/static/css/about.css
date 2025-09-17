@@ -1,0 +1,11 @@
+.admission {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+.admission__details {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}

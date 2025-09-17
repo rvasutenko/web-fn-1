@@ -1,0 +1,17 @@
+{% load static %}
+
+<details class="details">
+    <summary class="details__summary">
+        {{ summary }}
+        <img class="details__close" src="{% static 'img/icons/dropdown-icon.svg' %}" alt="">
+    </summary>
+    <div class="details__content">
+        <span class="details__subtitle">{{ subtitle1 }}</span>
+        {% if subtitle2 %}
+            <span class="details__subtitle">{{ subtitle2 }}</span>
+        {% endif %}
+        {% if paragraph %}
+            <p class="details__paragraph">{{ paragraph }}</p>
+        {% endif %}
+    </div>
+</details>
