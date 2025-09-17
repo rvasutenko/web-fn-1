@@ -15,6 +15,7 @@ main {
     display: flex;
     flex-direction: column;
     gap: 140px;
+    margin-top: 81px;
 }
 
 body {
@@ -26,4 +27,8 @@ body {
 
 h1 {
     font-size: 48px;
+}
+
+a {
+    text-decoration: none;
 }
