@@ -49,27 +49,24 @@ class MaterialType(models.Model):
 
 
 class MaterialManager(models.Manager):
-    def grouped(self, include_fn1=True, exclude_fn1=False):
-        qs = (
-            self.get_queryset()
-            .select_related("discipline", "material_type")
-            .order_by("semester", "discipline__name")
+    def grouped(self, faculty_name=None, exclude_faculty_name=None):
+        qs = self.get_queryset().select_related("discipline", "material_type").order_by(
+            "semester", "discipline__name"
         )
+
+        if faculty_name:
+            qs = qs.filter(faculties__name=faculty_name)
+        if exclude_faculty_name:
+            qs = qs.exclude(faculties__name=exclude_faculty_name)
 
         data = defaultdict(lambda: defaultdict(lambda: defaultdict(list)))
 
         for material in qs:
-            faculty_names = [f.name for f in material.faculties.all()]
-            if exclude_fn1 and "ФН1" in faculty_names:
-                continue
-            if not include_fn1 and "ФН1" in faculty_names:
-                continue
-
             semester = material.semester
             discipline_name = material.discipline.name
-            type = material.material_type.name
+            type_name = material.material_type.name
 
-            data[semester][discipline_name][type].append({
+            data[semester][discipline_name][type_name].append({
                 "title": material.title,
                 "url": material.file.url if material.file else None,
             })
@@ -77,11 +74,10 @@ class MaterialManager(models.Manager):
         return data
 
     def for_fn1(self):
-        
-        return self.grouped(include_fn1=True, exclude_fn1=False)
+        return self.grouped(faculty_name="ФН1")
 
     def for_other_faculties(self):
-        return self.grouped(include_fn1=False, exclude_fn1=True)
+        return self.grouped(exclude_faculty_name="ФН1")
 
 
 class Material(models.Model):
