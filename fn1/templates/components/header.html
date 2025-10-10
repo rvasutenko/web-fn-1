@@ -4,11 +4,23 @@
     <img class="header__logo" src="{% static 'img/bauman-logo.svg' %}" alt="Логотип МГТУ им. Н.Э. Баумана">
 
     <nav class="header__nav">
-        <a href="" class="header__anchor">О кафедре</a>
-        <a href="" class="header__anchor">Учебные материалы</a>
-        <a href="" class="header__anchor">Проекты</a>
-        <a href="" class="header__anchor">Новости</a>
-        <a href="" class="header__anchor">Контакты</a>
+        <a href="/" class="header__anchor">О кафедре</a>
+
+        <div class="header__dropdown">
+            <button class="header__anchor header__dropdown-toggle" id="materialsToggle">
+                Учебные материалы
+                <img class="header__arrow" src="{% static 'img/icons/dropdown-dark-icon.svg' %}" alt="">
+            </button>
+
+            <div class="header__dropdown-menu" id="materialsMenu">
+                <a href="/materials" class="header__dropdown-item">ФН1</a>
+                <a href="/materials" class="header__dropdown-item">Остальные факультеты</a>
+            </div>
+        </div>
+
+        <a href="/#projects" class="header__anchor">Проекты</a>
+        <a href="/#news" class="header__anchor">Новости</a>
+        <a href="/#contacts" class="header__anchor">Контакты</a>
     </nav>
 
     <div class="header__contacts">
@@ -23,3 +35,26 @@
         </a>
     </div>
 </header>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const toggle = document.getElementById('materialsToggle');
+        const menu = document.getElementById('materialsMenu');
+        const arrow = document.querySelector('.header__arrow');
+    
+        // Открытие/закрытие меню при клике на кнопку
+        toggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            menu.classList.toggle('visible');
+            arrow.classList.toggle('open');
+        });
+    
+        // Закрытие при клике вне меню
+        document.addEventListener('click', (e) => {
+            if (!menu.contains(e.target) && !toggle.contains(e.target)) {
+                menu.classList.remove('visible');
+                arrow.classList.remove('open');
+            }
+        });
+    });
+</script>

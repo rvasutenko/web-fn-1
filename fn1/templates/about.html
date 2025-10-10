@@ -59,7 +59,7 @@
         </div>
     </section>
 
-    <section class="section projects">
+    <section id="projects" class="section projects">
         <h1>Проекты</h1>
         <div class="projects__content">
             {% for project in projects %}
@@ -75,7 +75,7 @@
         </div>
     </section>
 
-    <section class="section news">
+    <section id="news" class="section news">
         <h1>Новости</h1>
         <div class="news__content">
             {% for news_article in news %}
@@ -84,7 +84,7 @@
         </div>
     </section>
 
-    <section class="section contacts">
+    <section id="contacts" class="section contacts">
         <h1>Контакты</h1>
         {% include 'components/contacts.html' %}
     </section>
