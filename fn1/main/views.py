@@ -109,3 +109,17 @@ def materials_page(request):
     news = News.objects.all()
 
     return render(request, "materials.html", {"materials": materials_dict, "news": news})
+
+def fn_materials_page(request):
+    materials_grouped = Material.objects.for_fn1()
+
+    def convert_dd(d):
+        if isinstance(d, defaultdict):
+            d = {k: convert_dd(v) for k, v in d.items()}
+        return d
+
+    materials_dict = convert_dd(materials_grouped)
+
+    news = News.objects.all()
+
+    return render(request, "fn_materials.html", {"materials": materials_dict, "news": news})

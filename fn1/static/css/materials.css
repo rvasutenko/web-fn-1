@@ -1,0 +1,94 @@
+.materials-block {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.subtitle-big {
+    display: inline-flex;
+    font-size: 32px;
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.subtitle-big.smaller{
+    font-size: 28px;
+}
+
+.subtitle-big:hover{
+    color: var(--bg-accent);
+}
+
+.subtitle-big::marker {
+    content: '';
+}
+
+details > summary.subtitle-big {
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+
+details > summary.subtitle-small {
+    margin-top: 4px;
+    margin-bottom: 2px;
+}
+
+details[open] > summary.subtitle-big {
+  color: var(--bg-accent);
+}
+
+details[open] > summary.subtitle-small {
+  color: var(--bg-accent);
+}
+
+
+details details > summary.subtitle-big {
+  margin-left: 30px;
+}
+
+.subtitle-small {
+    display: inline-flex;
+    font-size: 24px;
+    color: var(--text-primary);
+    cursor: pointer;
+}
+
+.subtitle-small:hover{
+    color: var(--bg-accent);
+}
+
+.subtitle-small::marker {
+    content: '';
+}
+
+.details[open] .subtitle-small{
+    color: var(--bg-accent);
+}
+
+details[open] summary.subtitle-small{
+    margin-left: 60px;
+}
+
+.materials__fileslist{
+    display: flex;
+    flex-direction: column;
+    margin-left: 90px;
+    margin-top: 6px;
+    gap: 8px;
+}
+
+.materals__fileinfo{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.materials-block__filename{
+    font-size: 18px;
+    color: vat(--text-primary);
+}
+
+.materals__fileicon{
+    width: 20px;
+}
