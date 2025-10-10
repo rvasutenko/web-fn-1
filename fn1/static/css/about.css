@@ -102,3 +102,19 @@
     flex-direction: column;
     gap: 40px;
 }
+
+
+.news {
+    gap: 28px;
+}
+
+.news__content {
+    display: flex;
+    flex-direction: row;
+    gap: 32px;
+}
+
+
+.contacts {
+    gap: 28px;
+}

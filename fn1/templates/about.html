@@ -6,6 +6,10 @@
 {% endblock %}
 
 {% block main %}
+    <section class="section first-screen">
+        {% include 'components/first_screen.html' %}
+    </section>
+
     <section class="section about">
         <div class="about__block">
             <h1>О кафедре</h1>
@@ -55,7 +59,7 @@
         </div>
     </section>
 
-    <section class="section projects">
+    <section id="projects" class="section projects">
         <h1>Проекты</h1>
         <div class="projects__content">
             {% for project in projects %}
@@ -63,11 +67,25 @@
                     <span class="subtitle-1">{{ project.title }}</span>
                     <div class="project__content">
                         {% for article in project.content %}
-                            {% include 'components/article.html' with reversed=article.reversed img=article.img title=article.title text=article.text list=article.list %}
+                            {% include 'components/article.html' with reversed=article.reversed img=article.img title=article.title text=article.text text_group=article.text_group list=article.list button=article.button %}
                         {% endfor %}
                     </div>
                 </div>
             {% endfor %}
         </div>
+    </section>
+
+    <section id="news" class="section news">
+        <h1>Новости</h1>
+        <div class="news__content">
+            {% for news_article in news %}
+                {% include 'components/news_article.html' with img=news_article.img title=news_article.title text=news_article.text %}
+            {% endfor %}
+        </div>
+    </section>
+
+    <section id="contacts" class="section contacts">
+        <h1>Контакты</h1>
+        {% include 'components/contacts.html' %}
     </section>
 {% endblock %}
