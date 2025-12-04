@@ -7,6 +7,11 @@
     user-select: none;
     display: flex;
     flex-direction: column;
+
+    @media screen and (max-width: 600px) {
+        padding: 16px 24px;
+        border-radius: 28px;
+    }
 }
 
 .details__summary {
@@ -16,6 +21,10 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    @media screen and (max-width: 600px) {
+        font-size: 20px;
+    }
 }
 
 .details__close {
@@ -23,6 +32,11 @@
     height: 28px;
     cursor: pointer;
     transition: transform .2s ease-in-out;
+
+    @media screen and (max-width: 600px) {
+        width: 20px;
+        height: 20px;
+    }
 }
 
 .details[open] .details__close {
@@ -42,9 +56,17 @@
 
 .details__subtitle {
     font-size: 28px;
+
+    @media screen and (max-width: 600px) {
+        font-size: 20px;
+    }
 }
 
 .details__paragraph {
     font-size: 18px;
     line-height: 1.4;
+
+    @media screen and (max-width: 600px) {
+        font-size: 16px;
+    }
 }

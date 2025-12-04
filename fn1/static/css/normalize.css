@@ -19,6 +19,19 @@ main {
     flex-direction: column;
     gap: 140px;
     margin-top: 81px;
+
+    @media screen and (max-width: 960px) {
+        padding: 140px 64px;
+        gap: 80px;
+    }
+
+    @media screen and (max-width: 600px) {
+        padding: 0 20px;
+    }
+
+    @media screen and (max-width: 500px) {
+        gap: 60px;
+    }
 }
 
 body {
@@ -30,6 +43,10 @@ body {
 
 h1 {
     font-size: 48px;
+
+    @media screen and (max-width: 500px) {
+        font-size: 40px;
+    }
 }
 
 a {

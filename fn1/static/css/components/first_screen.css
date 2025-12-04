@@ -1,5 +1,10 @@
 .first-screen__container {
     height: 80vh;
+
+    @media screen and (max-width: 600px) {
+        font-size: 16px;
+        height: calc(100vh - 81px);
+    }
 }
 
 .first-screen__content {
