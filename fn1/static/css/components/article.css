@@ -3,10 +3,19 @@
     flex-direction: row;
     align-items: center;
     gap: 40px;
+
+    @media screen and (max-width: 600px) {
+        flex-direction: column;
+        gap: 16px;
+    }
 }
 
 .article.reversed {
     flex-direction: row-reverse;
+
+    @media screen and (max-width: 600px) {
+        flex-direction: column;
+    }
 }
 
 .article.imgless:not(:first-child) {
@@ -24,6 +33,12 @@
     height: 100%;
     object-fit: cover;
     user-select: none;
+
+    @media screen and (max-width: 600px) {
+        width: 100%;
+        max-height: 400px;
+        max-width: unset;
+    }
 }
 
 .article__content {

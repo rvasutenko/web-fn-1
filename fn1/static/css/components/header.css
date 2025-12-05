@@ -8,6 +8,10 @@
     position: fixed;
     background: var(--bg-primary);
     z-index: 2;
+
+    @media screen and (max-width: 600px) {
+        padding: 12px 20px;
+    }
 }
 
 .header__logo {
@@ -33,6 +37,10 @@
     border: none;
     cursor: pointer;
     font: inherit;
+
+    @media screen and (max-width: 600px) {
+        display: none;
+    }
 }
 
 .header__arrow {
@@ -88,4 +96,9 @@
 .header__contact {
     width: 28px;
     height: 28px;
+
+    @media screen and (max-width: 600px) {
+        width: 24px;
+        height: 24px;
+    }
 }

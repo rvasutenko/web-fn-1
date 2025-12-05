@@ -1,6 +1,7 @@
 .section {
     display: flex;
     flex-direction: column;
+    overflow: hidden;
 }
 
 .subtitle-1 {
@@ -21,6 +22,10 @@
     margin-top: 1em;
     font-size: 18px;
     line-height: 1.4;
+
+    @media screen and (max-width: 600px) {
+        font-size: 16px;
+    }
 }
 
 .p:first-child {
@@ -37,6 +42,10 @@
 .list-item {
     font-size: 18px;
     line-height: 1.4;
+
+    @media screen and (max-width: 600px) {
+        font-size: 16px;
+    }
 }
 
 .list-item::marker {
@@ -83,6 +92,10 @@
 
 .projects {
     gap: 40px;
+
+    @media screen and (max-width: 600px) {
+        gap: 20px;
+    }
 }
 
 .projects__content {
@@ -113,7 +126,6 @@
     flex-direction: row;
     gap: 32px;
 }
-
 
 .contacts {
     gap: 28px;
