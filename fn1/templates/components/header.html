@@ -1,0 +1,114 @@
+{% load static %}
+
+<header class="header">
+    <div class="top">
+        <a href="/">
+            <img class="header__logo" src="{% static 'img/bauman-logo.svg' %}" alt="Логотип МГТУ им. Н.Э. Баумана">
+        </a>
+        <nav class="header__nav">
+            <button id="open" onclick="toggleMenu()">
+                <img src="{% static 'img/icons/gamburger.svg' %}" alt="" class="header__menu"/>
+            </button>
+
+            <button id="close" class="hidden" onclick="toggleMenu()">
+                <img src="{% static 'img/icons/close.svg' %}" alt="" class="header__menu"/>
+            </button>
+    
+            <a href="/" class="header__anchor">О кафедре</a>
+    
+            <div class="header__dropdown">
+                <button class="header__anchor header__dropdown-toggle" id="materialsToggle">
+                    Учебные материалы
+                    <img class="header__arrow" src="{% static 'img/icons/dropdown-dark-icon.svg' %}" alt="">
+                </button>
+    
+                <div class="header__dropdown-menu" id="materialsMenu">
+                    <a href="/materials" class="header__dropdown-item">ФН</a>
+                    <a href="/materials" class="header__dropdown-item">Остальные факультеты</a>
+                </div>
+            </div>
+    
+            <a href="/#projects" class="header__anchor">Проекты</a>
+            <a href="/#news" class="header__anchor">Новости</a>
+            <a href="/#contacts" class="header__anchor">Контакты</a>
+
+            <div class="header__contacts">
+                <a href="https://t.me/abitur_fn">
+                    <img class="header__contact" src="{% static 'img/icons/tg-logo-icon.svg' %}" alt="Telegram кафедры">
+                </a>
+                <a href="tel:8-499-263-63-92">
+                    <img class="header__contact" src="{% static 'img/icons/phone-icon.svg' %}" alt="Telegram кафедры">
+                </a>
+                <a href="mailto:dekanatfn@bmstu.ru">
+                    <img class="header__contact" src="{% static 'img/icons/mail-icon.svg' %}" alt="Telegram кафедры">
+                </a>
+            </div>
+        </nav>
+    </div>
+
+    <div class="header__mobile-menu" id="mobileMenu">
+        <a href="/" class="header__mobile-item">О кафедре</a>
+    
+        <div class="header__mobile-dropdown">
+            <button class="header__mobile-item mobile-toggle" id="mobileMaterials">
+                Учебные материалы
+            </button>
+            <div class="header__mobile-submenu" id="mobileSubmenu">
+                <a href="/fnmaterials" class="header__mobile-subitem">ФН</a>
+                <a href="/materials" class="header__mobile-subitem">Остальные факультеты</a>
+            </div>
+        </div>
+    
+        <a href="/#projects" class="header__mobile-item">Проекты</a>
+        <a href="/#news" class="header__mobile-item">Новости</a>
+        <a href="/#contacts" class="header__mobile-item">Контакты</a>
+    </div>
+</header>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const toggle = document.getElementById('materialsToggle');
+        const menu = document.getElementById('materialsMenu');
+        const arrow = document.querySelector('.header__arrow');
+    
+        // Открытие/закрытие меню при клике на кнопку
+        toggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            menu.classList.toggle('visible');
+            arrow.classList.toggle('open');
+        });
+    
+        // Закрытие при клике вне меню
+        document.addEventListener('click', (e) => {
+            if (!menu.contains(e.target) && !toggle.contains(e.target)) {
+                menu.classList.remove('visible');
+                arrow.classList.remove('open');
+            }
+        });
+    });
+</script>
+
+<script>
+    function toggleMenu() {
+        const header = document.querySelector('.header');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        const menu = document.getElementById('open');
+        const close = document.getElementById('close');
+        menu.classList.toggle('hidden');
+        close.classList.toggle('hidden');
+
+        header.classList.toggle('header--open');
+        mobileMenu.classList.toggle('open');
+    }
+
+    // Подменю "Учебные материалы"
+    document.addEventListener("DOMContentLoaded", () => {
+        const toggle = document.getElementById("mobileMaterials");
+        const submenu = document.getElementById("mobileSubmenu");
+
+        toggle?.addEventListener("click", () => {
+            submenu.classList.toggle("open");
+        });
+    });
+</script>

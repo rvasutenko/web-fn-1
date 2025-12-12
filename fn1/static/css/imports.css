@@ -1,0 +1,15 @@
+@import url('constants.css');
+@import url('normalize.css');
+@import url('fonts.css');
+
+@import url('about.css');
+@import url('materials.css');
+
+@import url('components/header.css');
+@import url('components/footer.css');
+@import url('components/details.css');
+@import url('components/article.css');
+@import url('components/news_article.css');
+@import url('components/contacts.css');
+@import url('components/first_screen.css');
+@import url('components/aboutFn.css');

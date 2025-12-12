@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    Hot questions
+{% endblock %}
+
+{% block main %}
+<div class="materials-block">
+    <h1> Учебные материалы для факультетов МТ, ИБМ, РК, БМТ,Э, Л, Юр, СНГ, ГУИМЦ</h1>
+    {% for semester, disciplines in materials.items %}
+        <details>
+            <summary class="subtitle-big">
+                Семестр {{ semester }}
+            </summary>
+            {% for discipline_name, types in disciplines.items %}
+                <details class="materials__discipline">
+                    <summary class="subtitle-big smaller">
+                        {{ discipline_name }}
+                    </summary>
+                    {% for type_name, items in types.items %}
+                        <details>
+                            <summary class="subtitle-small">
+                                {{ type_name }}
+                            </summary>
+                            <div class="materials__fileslist">
+                                {% for item in items %}
+                                    <div class="materals__fileinfo">
+                                        <img class="material__fileicon" src="{% static 'img/icons/file-icon.svg' %}">
+                                        <a class="materials__filename" href="{{ item.url }}">{{ item.title }}</a>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </details>
+                    {% endfor %}
+                </details>
+            {% endfor %}
+        </details>
+    {% endfor %}
+</div>
+{% endblock %}

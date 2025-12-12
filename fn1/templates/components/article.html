@@ -1,0 +1,42 @@
+{% load static %}
+
+<article class="article {% if reversed %}reversed{% endif %} {% if not img %}imgless{% endif %}">
+    {% if img %}
+        <img class="article__img" src="{{ img }}" alt="">
+    {% endif %}
+    <div class="article__content">
+        {% if title %}
+            <div class="article__header">
+                <span class="subtitle-2">{{ title }}</span>
+            </div>
+        {% endif %}
+
+        <div class="article__text">
+            {% if text %}
+                <p class="p">{{ text }}</p>
+            {% endif %}
+
+            {% if text_group %}
+                <div class="text_group">
+                    {% for text_chunk in text_group %}
+                        <p class="p">{{ text_chunk }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+            {% if list %}
+                <ul class="list">
+                    {% for item in list %}
+                        <li class="list-item">{{ item }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+
+        {% if button %}
+            <a class="article__button button_anchor" href="{{ button.href }}">
+                {{ button.text }}
+            </a>
+        {% endif %}
+    </div>
+</article>

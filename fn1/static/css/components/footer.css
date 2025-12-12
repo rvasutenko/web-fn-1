@@ -1,0 +1,128 @@
+.footer {
+    width: 100%;
+    padding: 12px 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    background-color: var(--bg-accent);
+
+    @media screen and (max-width: 600px) {
+        padding: 12px 20px;
+    }
+}
+
+
+.footer__logo{
+    width: 64px;
+    margin-bottom: 10px;
+
+}
+
+.footer__links, .footer__contacts{
+    display: flex;
+    flex-direction: column;
+}
+
+.footer__contacts{
+    max-width: 450px;
+}
+
+.footer__contacts p {
+  margin: 5px 0;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.footer__links h3,
+.footer__contacts h3{
+    font-size: 16px;
+    color: var(--bg-primary);
+    margin-bottom: 5px;
+}
+
+.footer__links_content{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.footer__links ul,
+.footer__contacts ul
+{
+    list-style: none;
+    font-size: 12px;
+    color: var(--bg-primary);
+}
+
+
+.footer__links ul li,
+.footer__contacts ul li {
+  margin-bottom: 5px;
+}
+
+
+.footer__links a,
+.footer__contacts a {
+    color: var(--bg-primary);
+    text-decoration: none;
+    font-size: 12px;
+}
+
+.footer__links a:hover,
+.footer__contacts a:hover {
+  text-decoration: underline;
+}
+
+.links__divider {
+  width: 1px;
+  background-color: var(--bg-primary);
+  margin: 0 20px;
+}
+
+
+@media (max-width: 480px) {
+    .footer {
+        padding: 20px;
+        display: grid;
+        grid-template-columns: 60px 1fr;
+        grid-template-areas:
+            "logo links"
+            "logo contacts";
+        column-gap: 20px;
+        align-items: start;
+        margin-top: 40px;
+    }
+
+    .footer__logo {
+      grid-area: logo;
+      margin: 0;
+      width: 64px;
+      height: 72px;
+    }
+
+    .footer__links {
+        grid-area: links;
+        width: 100%;
+        margin-bottom: 8px;
+    }
+
+    .footer__links a {
+      font-size: 14px;
+    }
+
+    .footer__contacts {
+        grid-area: contacts;
+        width: 100%;
+    }
+
+    .footer__links_content {
+        flex-direction: column;
+    }
+
+    .links__divider {
+        display: none;
+    }
+}
+
+
