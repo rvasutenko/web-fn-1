@@ -1,0 +1,11 @@
+.about-fn-container {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.about-fn-container-base {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
