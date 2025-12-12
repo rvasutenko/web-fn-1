@@ -1,7 +1,9 @@
 {% load static %}
 
 <header class="header">
-    <img class="header__logo" src="{% static 'img/bauman-logo.svg' %}" alt="Логотип МГТУ им. Н.Э. Баумана">
+    <a href="/">
+        <img class="header__logo" src="{% static 'img/bauman-logo.svg' %}" alt="Логотип МГТУ им. Н.Э. Баумана">
+    </a>
 
     <nav class="header__nav">
         <a href="/" class="header__anchor">О кафедре</a>
@@ -13,7 +15,7 @@
             </button>
 
             <div class="header__dropdown-menu" id="materialsMenu">
-                <a href="/materials" class="header__dropdown-item">ФН1</a>
+                <a href="/materials" class="header__dropdown-item">ФН</a>
                 <a href="/materials" class="header__dropdown-item">Остальные факультеты</a>
             </div>
         </div>

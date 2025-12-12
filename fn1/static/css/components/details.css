@@ -7,6 +7,7 @@
     user-select: none;
     display: flex;
     flex-direction: column;
+    list-style: none;
 
     @media screen and (max-width: 600px) {
         padding: 16px 24px;
