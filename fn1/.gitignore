@@ -4,6 +4,7 @@ venv/
 .venv
 .idea
 .env
+migrations/
 
 *.log
 *.pot
