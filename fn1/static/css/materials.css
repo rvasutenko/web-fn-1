@@ -3,6 +3,7 @@
     flex-direction: column;
     gap: 16px;
     user-select: none;
+    padding-top: 32px;
 }
 
 .subtitle-big {

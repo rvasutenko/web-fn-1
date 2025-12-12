@@ -150,7 +150,13 @@ button {
 
 
 
+.header-btn {
+    display: none;
 
+    @media screen and (max-width: 600px) {
+        display: block;
+    }
+}
 
 /* Мобильное меню */
 .header__mobile-menu {

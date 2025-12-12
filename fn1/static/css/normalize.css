@@ -13,15 +13,15 @@ html {
 
 main {
     flex: 1;
-    padding: 140px 100px;
+    padding: 0 100px;
     padding-top: 0;
     display: flex;
     flex-direction: column;
     gap: 140px;
-    margin-top: 81px;
+    margin-top: 77px;
 
     @media screen and (max-width: 960px) {
-        padding: 140px 64px;
+        padding: 0 64px;
         gap: 80px;
         margin-top: 72px;
     }
