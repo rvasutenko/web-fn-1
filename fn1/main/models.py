@@ -5,7 +5,7 @@ from collections import defaultdict
 class News(models.Model):
     image = models.ImageField(verbose_name="Изображение новость", upload_to="news/images/")
     heading = models.CharField(verbose_name="Заголовок", max_length=50)
-    text = models.CharField(verbose_name="Текст", max_length=200)
+    text = models.CharField(verbose_name="Текст", max_length=5000)
     is_visible = models.BooleanField(
         verbose_name="Видимость", 
         default=True,
