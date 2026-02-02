@@ -1,8 +1,8 @@
 .about-fn-container {
     display: flex;
     flex-direction: column;
-    gap: 24px;
-    padding-top: 32px;
+    gap: 56px;
+    padding-top: 64px;
 }
 
 .about-fn-container-base {

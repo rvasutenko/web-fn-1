@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block title %}
-О кафедре
+    О кафедре ФН1
 {% endblock %}
 
 {% block main %}
@@ -13,7 +13,8 @@
         {% include 'components/article.html' with img=history.img text=history.text reversed=True %}
         {% include 'components/article.html' with img=persolation1.img text=persolation1.text %}
     </div>
-    <div class="about-fn-container-base">
+
+    <div class="about-fn-container-base" id="personalii">
         <span class="subtitle-1">Персоналии</span>
         {% include 'components/article.html' with img=persolation.img text=persolation.text reversed=True %}
         {% include 'components/article.html' with img=persolation1.img text=persolation1.text %}
