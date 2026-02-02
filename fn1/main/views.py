@@ -63,8 +63,8 @@ def about_page(request):
                         'Групповой аккаунт кафедры на GitHub предназначен для размещения учебных материалов и интересных кафедре программных проектов. Если желаете стать участником, обращайтесь на кафедру.'
                     ],
                     'button': {
-                        'text': 'dekanatfn@bmstu.ru',
-                        'href': 'mailto:dekanatfn@bmstu.ru',
+                        'text': 'Перейти на GitHub',
+                        'href': 'https://github.com/bmstu-fs1',
                     },
                 },
             ]

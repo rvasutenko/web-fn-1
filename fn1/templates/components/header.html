@@ -14,17 +14,30 @@
                 <img src="{% static 'img/icons/close.svg' %}" alt="" class="header__menu"/>
             </button>
     
-            <a href="/" class="header__anchor">Главная</a>
-            <a href="/aboutFn" class="header__anchor">О кафедре</a>
+            <!-- <a href="/" class="header__anchor">Главная</a> -->
+            <!-- <a href="/aboutFn" class="header__anchor">О кафедре</a> -->
+
+            <div class="header__dropdown">
+                <button class="header__anchor header__dropdown-toggle" id="aboutToggle">
+                    О кафедре
+                    <img id="aboutArrow" class="header__arrow" src="{% static 'img/icons/dropdown-dark-icon.svg' %}" alt="">
+                </button>
+    
+                <div class="header__dropdown-menu" id="aboutMenu">
+                    <a href="/#main-directions" class="header__dropdown-item">Основные направления</a>
+                    <a href="/aboutFn" class="header__dropdown-item">История кафедры</a>
+                    <a href="/aboutFn#personalii" class="header__dropdown-item">Персоналии</a>
+                </div>
+            </div>
     
             <div class="header__dropdown">
                 <button class="header__anchor header__dropdown-toggle" id="materialsToggle">
                     Учебные материалы
-                    <img class="header__arrow" src="{% static 'img/icons/dropdown-dark-icon.svg' %}" alt="">
+                    <img id="materialsArrow" class="header__arrow" src="{% static 'img/icons/dropdown-dark-icon.svg' %}" alt="">
                 </button>
     
                 <div class="header__dropdown-menu" id="materialsMenu">
-                    <a href="/materials" class="header__dropdown-item">ФН</a>
+                    <a href="/fnmaterials" class="header__dropdown-item">ФН</a>
                     <a href="/materials" class="header__dropdown-item">Остальные факультеты</a>
                 </div>
             </div>
@@ -35,13 +48,13 @@
 
         </nav>
         <div class="header__contacts">
-            <a href="https://t.me/abitur_fn">
+            <a href="https://t.me/fn1_high_math">
                 <img class="header__contact" src="{% static 'img/icons/tg-logo-icon.svg' %}" alt="Telegram кафедры">
             </a>
             <a href="tel:8-499-263-63-92">
                 <img class="header__contact" src="{% static 'img/icons/phone-icon.svg' %}" alt="Telegram кафедры">
             </a>
-            <a href="mailto:dekanatfn@bmstu.ru">
+            <a href="mailto:fn1@bmstu.ru">
                 <img class="header__contact" src="{% static 'img/icons/mail-icon.svg' %}" alt="Telegram кафедры">
             </a>
         </div>
@@ -67,11 +80,11 @@
     </div>
 </header>
 
-<script>
+<!-- <script>
     document.addEventListener('DOMContentLoaded', () => {
         const toggle = document.getElementById('materialsToggle');
         const menu = document.getElementById('materialsMenu');
-        const arrow = document.querySelector('.header__arrow');
+        const arrow = document.getElementById('materialsArrow');
     
         // Открытие/закрытие меню при клике на кнопку
         toggle.addEventListener('click', (e) => {
@@ -89,6 +102,87 @@
         });
     });
 </script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const toggle = document.getElementById('aboutToggle');
+        const menu = document.getElementById('aboutMenu');
+        const arrow = document.getElementById('aboutArrow');
+    
+        // Открытие/закрытие меню при клике на кнопку
+        toggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            menu.classList.toggle('visible');
+            arrow.classList.toggle('open');
+        });
+    
+        // Закрытие при клике вне меню
+        document.addEventListener('click', (e) => {
+            if (!menu.contains(e.target) && !toggle.contains(e.target)) {
+                menu.classList.remove('visible');
+                arrow.classList.remove('open');
+            }
+        });
+    });
+</script> -->
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const dropdowns = [
+            {
+                toggle: 'aboutToggle',
+                menu: 'aboutMenu',
+                arrow: 'aboutArrow',
+            },
+            {
+                toggle: 'materialsToggle',
+                menu: 'materialsMenu',
+                arrow: 'materialsArrow',
+            }
+        ];
+    
+        let openedDropdown = null;
+    
+        dropdowns.forEach(({ toggle, menu, arrow }) => {
+            const toggleEl = document.getElementById(toggle);
+            const menuEl = document.getElementById(menu);
+            const arrowEl = document.getElementById(arrow);
+    
+            if (!toggleEl || !menuEl || !arrowEl) return;
+    
+            toggleEl.addEventListener('click', (e) => {
+                e.stopPropagation();
+    
+                // если открыт другой dropdown — закрываем его
+                if (openedDropdown && openedDropdown !== menuEl) {
+                    closeDropdown(openedDropdown);
+                }
+    
+                const isOpen = menuEl.classList.toggle('visible');
+                arrowEl.classList.toggle('open', isOpen);
+    
+                openedDropdown = isOpen ? menuEl : null;
+            });
+        });
+    
+        document.addEventListener('click', () => {
+            if (openedDropdown) {
+                closeDropdown(openedDropdown);
+                openedDropdown = null;
+            }
+        });
+    
+        function closeDropdown(menuEl) {
+            menuEl.classList.remove('visible');
+    
+            const arrow = document.querySelector(
+                `.header__arrow.open`
+            );
+            arrow?.classList.remove('open');
+        }
+    });
+    </script>
+    
 
 <script>
     function toggleMenu() {
