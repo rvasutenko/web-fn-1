@@ -79,7 +79,7 @@
         <h1>Новости</h1>
         <div class="news__content">
             {% for news_article in news %}
-                {% include 'components/news_article.html' with img=news_article.img title=news_article.title text=news_article.text %}
+                {% include 'components/news_article.html' with img=news_article.img title=news_article.title text=news_article.text id=news_article.id %}
             {% endfor %}
         </div>
     </section>
