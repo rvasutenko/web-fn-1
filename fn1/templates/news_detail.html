@@ -6,7 +6,9 @@
 </head>
 <body>
     <h1>{{ news.heading }}</h1>
-пше 
+    {% if news.image %}
+        <img src="{{ news.image.url }}" alt="{{ news.heading }}" style="max-width: 400px;">
+    {% endif %}
     <p>{{ news.text }}</p>
 </body>
 </html>
