@@ -1,14 +1,25 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <title>{{ news.heading }}</title>
-</head>
-<body>
-    <h1>{{ news.heading }}</h1>
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    {{ news.heading }}
+{% endblock %}
+
+{% block main %}
+<div class="news-detail__block" style="margin: 20px auto; font-family: Arial, sans-serif; line-height: 1.5;">
+
+    <h1 style="margin-bottom: 20px;">{{ news.heading }}</h1>
+
     {% if news.image %}
-        <img src="{{ news.image.url }}" alt="{{ news.heading }}" style="max-width: 400px;">
+        <img src="{{ news.image.url }}" 
+             alt="{{ news.heading }}" 
+             style="float: left; margin: 0 20px 10px 0; width: 300px; height: auto; border-radius: 8px;">
     {% endif %}
+
     <p>{{ news.text }}</p>
-</body>
-</html>
+
+    <div style="clear: both;"></div>
+</div>
+
+
+{% endblock %}
