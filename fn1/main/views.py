@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import Material, News
 from collections import defaultdict
 
@@ -71,22 +71,16 @@ def about_page(request):
         },
     ]
 
+    news_queryset = News.objects.filter(is_visible=True)
+
     news = [
         {
-            'img': '/static/img/studvesna.jpg',
-            'title': 'Студвесна 2025 года',
-            'text': 'К участию приглашаются студенты и аспиранты всех курсов для представления проектов по математическим или прикладным дисциплинам. По результатам выступления ряд работ выбирается для публикации в сборнике трудов конференции (РИНЦ), а также происходит отбор для общеуниверситетского пленарного заседания с участием внешних экспертов.', 
-        },
-        {
-            'img': '/static/img/studvesna.jpg',
-            'title': 'Студвесна 2025 года',
-            'text': 'К участию приглашаются студенты и аспиранты всех курсов для представления проектов по математическим или прикладным дисциплинам. По результатам выступления ряд работ выбирается для публикации в сборнике трудов конференции (РИНЦ), а также происходит отбор для общеуниверситетского пленарного заседания с участием внешних экспертов.', 
-        },
-        {
-            'img': '/static/img/studvesna.jpg',
-            'title': 'Студвесна 2025 года',
-            'text': 'К участию приглашаются студенты и аспиранты всех курсов для представления проектов по математическим или прикладным дисциплинам. По результатам выступления ряд работ выбирается для публикации в сборнике трудов конференции (РИНЦ), а также происходит отбор для общеуниверситетского пленарного заседания с участием внешних экспертов.', 
-        },
+            'img': item.image.url if item.image else '',
+            'title': item.heading,
+            'text': item.text,
+            'id': item.id,
+        }
+        for item in news_queryset
     ]
 
     context = {
@@ -147,3 +141,10 @@ def fn_materials_page(request):
 
     return render(request, "fn_materials.html", {"materials": materials_dict, "news": news})
 
+
+def news_detail_page(request, news_id):
+    news_item = get_object_or_404(News, id=news_id)
+
+    return render(request, "news_detail.html", {
+        "news": news_item
+    })

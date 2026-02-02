@@ -1,11 +1,12 @@
 {% load static %}
-
-<article class="news-article">
-    <img class="news-article__img" src="{{ img }}" alt="">
-    <div class="news-article__info">
-        <span class="news-article__title">{{ title }}</span>
-        <div class="news-article__text">
-            <p class="p news-article__text">{{ text }}</p>
+<a href="{% url 'news_detail' id %}" style="text-decoration: none; color: inherit;">
+    <article class="news-article">
+        <img class="news-article__img" src="{{ img }}" alt="">
+        <div class="news-article__info">
+            <span class="news-article__title">{{ title }}</span>
+            <div class="news-article__text">
+                <p class="p news-article__text">{{ text }}</p>
+            </div>
         </div>
-    </div>
-</article>
+    </article>
+</a>
