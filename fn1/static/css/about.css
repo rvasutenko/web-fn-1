@@ -126,9 +126,18 @@
 }
 
 .news__content {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
     flex-direction: row;
-    gap: 32px;
+    gap: 40px 32px;
+
+    @media screen and (max-width: 960px) {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    @media screen and (max-width: 600px) {
+        gap: 40px 16px;
+    }
 }
 
 .contacts {
