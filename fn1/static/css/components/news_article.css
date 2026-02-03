@@ -32,4 +32,5 @@
     display: -webkit-box;
     overflow: hidden;
     -webkit-box-orient: vertical;
+    word-break: break-all;
 }
