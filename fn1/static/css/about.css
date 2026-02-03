@@ -128,7 +128,6 @@
 .news__content {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    flex-direction: row;
     gap: 40px 32px;
 
     @media screen and (max-width: 960px) {
