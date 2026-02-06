@@ -1,11 +1,46 @@
 from django.contrib import admin
-from .models import Material, MaterialType, Discipline, Faculty, News
+from .models import Material, MaterialType, Discipline, Faculty, News, ProjectParagraph, Project, Paragraph
 
 from django.contrib.auth.models import User, Group
 from django import forms
 
 admin.site.unregister(User)
 admin.site.unregister(Group)
+
+
+class ProjectParagraphInline(admin.TabularInline):
+    model = ProjectParagraph
+    extra = 1
+    autocomplete_fields = ("paragraph",)
+
+
+
+@admin.register(Project)
+class ProjectAdmin(admin.ModelAdmin):
+    list_display = ("id", "title", "is_visible")
+    list_filter = ("is_visible",)
+    search_fields = ("title",)
+    inlines = (ProjectParagraphInline,)
+
+
+
+@admin.register(Paragraph)
+class ParagraphAdmin(admin.ModelAdmin):
+    list_display = (
+        "id",
+        "title",
+        "type",
+        "is_visible",
+    )
+    list_filter = (
+        "type",
+        "is_visible",
+    )
+    search_fields = (
+        "title",
+        "text",
+    )
+
 
 class MaterialAdminForm(forms.ModelForm):
     FACULTY_CHOICES = [

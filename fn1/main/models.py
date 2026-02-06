@@ -2,6 +2,99 @@ from django.db import models
 from collections import defaultdict
 
 
+class ProjectParagraph(models.Model):
+    project = models.ForeignKey(
+        "Project",
+        on_delete=models.CASCADE,
+        related_name="project_paragraphs"
+    )
+    paragraph = models.ForeignKey(
+        "Paragraph",
+        on_delete=models.CASCADE
+    )
+    order = models.PositiveIntegerField(
+        verbose_name="Порядок",
+        default=0
+    )
+
+    class Meta:
+        ordering = ("order",)
+        verbose_name = "Параграф проекта"
+        verbose_name_plural = "Параграфы проекта"
+
+    def __str__(self):
+        return f"{self.project} → {self.paragraph}"
+
+
+class Paragraph(models.Model):
+    class ParagraphType(models.TextChoices):
+        LEFT_IMG = "leftImg", "Изображение слева"
+        RIGHT_IMG = "rightImg", "Изображение справа"
+        NO_IMG = "noImg", "Без изображения"
+        BTN = "btn", "Кнопка"
+
+    title = models.CharField(
+        verbose_name="Подзаголовок",
+        max_length=250
+    )
+
+    type = models.CharField(
+        verbose_name="Тип параграфа",
+        max_length=20,
+        choices=ParagraphType.choices,
+        default=ParagraphType.NO_IMG
+    )
+
+    image = models.ImageField(
+        verbose_name="Изображение",
+        upload_to="paragraphs/images/",
+        blank=True,
+        null=True
+    )
+
+    text = models.TextField(
+        verbose_name="Текст",
+        max_length=5000,
+        blank=True
+    )
+
+    is_visible = models.BooleanField(
+        verbose_name="Видимость",
+        default=True,
+        help_text="Если галочка снята, параграф не отображается на сайте"
+    )
+
+    class Meta:
+        verbose_name = "Параграф"
+        verbose_name_plural = "Параграфы"
+
+    def __str__(self):
+        return self.title
+
+
+class Project(models.Model):
+    title = models.CharField(verbose_name="Заголовок", max_length=250)
+
+    paragraphs = models.ManyToManyField(
+        Paragraph,
+        through="ProjectParagraph",
+        verbose_name="Параграфы"
+    )
+
+    is_visible = models.BooleanField(
+        verbose_name="Видимость",
+        default=True
+    )
+
+    class Meta:
+        verbose_name = "Проект"
+        verbose_name_plural = "Проекты"
+
+    def __str__(self):
+        return self.title
+
+
+
 class News(models.Model):
     image = models.ImageField(verbose_name="Изображение новость", upload_to="news/images/")
     heading = models.CharField(verbose_name="Заголовок", max_length=50)
@@ -18,7 +111,6 @@ class News(models.Model):
     
     def __str__(self):
         return self.heading
-    
 
 
 class Faculty(models.Model):
