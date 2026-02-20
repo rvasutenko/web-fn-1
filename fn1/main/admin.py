@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Material, MaterialType, Discipline, Faculty, News, ProjectParagraph, Project, Paragraph
+from .models import History, HistoryParagraph, Material, MaterialType, Discipline, Faculty, News, ProjectParagraph, Project, Paragraph
 
 from django.contrib.auth.models import User, Group
 from django import forms
@@ -14,6 +14,12 @@ class ProjectParagraphInline(admin.TabularInline):
     autocomplete_fields = ("paragraph",)
 
 
+class HistoryParagraphInline(admin.TabularInline):
+    model = HistoryParagraph
+    extra = 1
+    autocomplete_fields = ("paragraph",)
+
+
 
 @admin.register(Project)
 class ProjectAdmin(admin.ModelAdmin):
@@ -21,6 +27,14 @@ class ProjectAdmin(admin.ModelAdmin):
     list_filter = ("is_visible",)
     search_fields = ("title",)
     inlines = (ProjectParagraphInline,)
+
+
+@admin.register(History)
+class HistoryAdmin(admin.ModelAdmin):
+    list_display = ("id", "title", "is_visible")
+    list_filter = ("is_visible",)
+    search_fields = ("title",)
+    inlines = (HistoryParagraphInline,)
 
 
 

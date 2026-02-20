@@ -26,6 +26,30 @@ class ProjectParagraph(models.Model):
         return f"{self.project} → {self.paragraph}"
 
 
+class HistoryParagraph(models.Model):
+    history = models.ForeignKey(
+        "History",
+        on_delete=models.CASCADE,
+        related_name="history_paragraphs"
+    )
+    paragraph = models.ForeignKey(
+        "Paragraph",
+        on_delete=models.CASCADE
+    )
+    order = models.PositiveIntegerField(
+        verbose_name="Порядок",
+        default=0
+    )
+
+    class Meta:
+        ordering = ("order",)
+        verbose_name = "Параграф истории"
+        verbose_name_plural = "Параграфы истории"
+
+    def __str__(self):
+        return f"{self.history} → {self.paragraph}"
+
+
 class Paragraph(models.Model):
     class ParagraphType(models.TextChoices):
         LEFT_IMG = "leftImg", "Изображение слева"
@@ -67,6 +91,28 @@ class Paragraph(models.Model):
     class Meta:
         verbose_name = "Параграф"
         verbose_name_plural = "Параграфы"
+
+    def __str__(self):
+        return self.title
+
+
+class History(models.Model):
+    title = models.CharField(verbose_name="Заголовок", max_length=250)
+
+    paragraphs = models.ManyToManyField(
+        Paragraph,
+        through="HistoryParagraph",
+        verbose_name="Параграфы"
+    )
+
+    is_visible = models.BooleanField(
+        verbose_name="Видимость",
+        default=True
+    )
+
+    class Meta:
+        verbose_name = "История"
+        verbose_name_plural = "Истории"
 
     def __str__(self):
         return self.title
